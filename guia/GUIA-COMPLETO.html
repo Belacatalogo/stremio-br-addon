@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia Completo — Addon Stremio BR</title>
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background:#09090f; color:#ddd; padding:24px; line-height:1.6; }
+    .wrap { max-width:720px; margin:auto; }
+    h1,h2 { color:#fff; }
+    code, pre { background:#111118; border:1px solid #2a2a3d; border-radius:8px; padding:3px 7px; color:#c4b5fd; }
+    pre { padding:16px; overflow:auto; }
+    a { color:#a78bfa; }
+    .box { background:#111118; border:1px solid #2a2a3d; border-radius:14px; padding:18px; margin:18px 0; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🇧🇷 Addon Stremio — Dublado BR + Torbox</h1>
+  <p>Guia de instalação do addon usando GitHub, Vercel, Koyeb e Torbox.</p>
+
+  <div class="box">
+    <h2>Estrutura do repositório</h2>
+    <pre>stremio-br-addon/
+├── api/
+│   ├── _shared.js
+│   ├── index.js
+│   ├── manifest.js
+│   └── stream.js
+├── package.json
+├── vercel.json
+└── .gitignore</pre>
+  </div>
+
+  <div class="box">
+    <h2>1. Deploy do addon no Vercel</h2>
+    <p>Acesse <a href="https://vercel.com" target="_blank">vercel.com</a>, entre com GitHub, importe o repositório <strong>stremio-br-addon</strong> e clique em <strong>Deploy</strong>.</p>
+    <p>Depois do deploy, sua URL será parecida com:</p>
+    <pre>https://stremio-br-addon.vercel.app</pre>
+  </div>
+
+  <div class="box">
+    <h2>2. Deploy do indexer no Koyeb</h2>
+    <p>No Koyeb, crie um serviço Docker usando a imagem:</p>
+    <pre>felipemarinho97/torrent-indexer:latest</pre>
+    <p>Adicione a variável de ambiente:</p>
+    <pre>PORT=8000</pre>
+    <p>Ao finalizar, você terá uma URL parecida com:</p>
+    <pre>https://seu-servico.koyeb.app</pre>
+  </div>
+
+  <div class="box">
+    <h2>3. Instalar no Stremio</h2>
+    <p>No Stremio, instale o addon usando:</p>
+    <pre>https://SEU-DOMINIO-VERCEL.vercel.app/manifest.json</pre>
+    <p>Nas configurações, informe sua chave API do Torbox e a URL do indexer no Koyeb.</p>
+  </div>
+
+  <div class="box">
+    <h2>Problemas comuns</h2>
+    <ul>
+      <li>Se aparecer “Configure o addon”, preencha Torbox API Key e URL do indexer.</li>
+      <li>Se não retornar streams, teste a URL do Koyeb no navegador.</li>
+      <li>Se o stream demorar, o Torbox pode estar processando o torrent pela primeira vez.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
